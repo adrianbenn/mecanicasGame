@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://wbusp6770owx"]
+
+[ext_resource type="Script" uid="uid://deqj8532bqnc3" path="res://scripts/boton_principal.gd" id="1_ngsr6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r26ip"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7v510"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r26ip"]
+albedo_color = Color(1, 0.011764706, 0, 1)
+
+[node name="boton1" type="Area3D" unique_id=1031249451]
+script = ExtResource("1_ngsr6")
+switch = true
+tiempo = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1054588666]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.45602512, 0)
+shape = SubResource("CylinderShape3D_r26ip")
+
+[node name="mesh" type="CSGMesh3D" parent="." unique_id=647653957]
+transform = Transform3D(1.5, 0, 0, 0, 0.13383898, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7v510")
+material = SubResource("StandardMaterial3D_r26ip")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
