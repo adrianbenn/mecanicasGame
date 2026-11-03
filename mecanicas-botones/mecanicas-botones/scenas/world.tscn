@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://odi3p5qle8jj" path="res://scripts/puerta_1.gd" id="2_v27x2"]
 [ext_resource type="Script" uid="uid://b3we4flfb2xm2" path="res://scripts/puerta2.gd" id="4_8rn06"]
 [ext_resource type="Script" uid="uid://cbeimkqjrqw4w" path="res://scripts/puerta_4.gd" id="4_33ipb"]
-[ext_resource type="Script" uid="uid://cw1bkalk00ub4" path="res://scripts/puente.gd" id="6_arh6c"]
+[ext_resource type="Script" uid="uid://ul7u6ope44ui" path="res://scripts/catapulta.gd" id="7_c7xdx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r26ip"]
 
@@ -39,12 +39,31 @@ albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v27x2"]
 margin = 0.0
-size = Vector3(1.3243408, 2.013214, 0.5)
+size = Vector3(1.3452759, 2.013214, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8rn06"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arh6c"]
 albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pkp6"]
+size = Vector3(1.5, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7xdx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7xdx"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gpnsm"]
+rough = true
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_by2xk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kqj3r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnyr0"]
+albedo_color = Color(1, 0.8039216, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7v510"]
 
@@ -77,6 +96,18 @@ mesh = SubResource("PlaneMesh_3dxmy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.64801466, 0)
 shape = SubResource("BoxShape3D_r26ip")
 
+[node name="Piso2" type="StaticBody3D" parent="Nivel" unique_id=1111931412]
+transform = Transform3D(1.005505, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 15.221724, -28.78261)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nivel/Piso2" unique_id=1904508366]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -0.07823473, 0)
+material_override = SubResource("StandardMaterial3D_i5y6g")
+mesh = SubResource("PlaneMesh_3dxmy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/Piso2" unique_id=310152998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.64801466, 0)
+shape = SubResource("BoxShape3D_r26ip")
+
 [node name="BOTONES" type="Node3D" parent="Nivel" unique_id=1764221905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0327697)
 
@@ -90,30 +121,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.756186, 0.1515919, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3231406, 0.1515919, 0)
 
 [node name="B_puente" parent="Nivel/BOTONES" unique_id=1364991303 instance=ExtResource("1_v27x2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.296503, 0.1515919, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.082136, 0.1515919, 2.8385882)
+
+[node name="B_catapulta" parent="Nivel/BOTONES" unique_id=796394427 instance=ExtResource("1_v27x2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.556856, 0.1515919, 2.8385882)
 
 [node name="PUERTAS" type="Node3D" parent="Nivel" unique_id=1297682261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7485366, -6.8156967)
 
-[node name="Puerta1" type="StaticBody3D" parent="Nivel/PUERTAS" unique_id=1947566167]
+[node name="Puerta1" type="AnimatableBody3D" parent="Nivel/PUERTAS" unique_id=1892004935]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.469128, -0.12721372, 0)
 script = ExtResource("2_v27x2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/PUERTAS/Puerta1" unique_id=1647988569]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8857212, 0)
+transform = Transform3D(1, 0, 0, 0, 0.10125178, 0, 0, 0, 6.9628353, 0.018474579, 1.3040578, 0)
 shape = SubResource("BoxShape3D_7v510")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Nivel/PUERTAS/Puerta1" unique_id=1610158162]
-transform = Transform3D(3, 0, 0, 0, 3.5466769, 0, 0, 0, 0.335, 0, 1.2150362, 0)
+transform = Transform3D(3, 0, 0, 0, 0.34736288, 0, 0, 0, 3.3140855, 0, 1.2150362, 0)
 mesh = SubResource("BoxMesh_v27x2")
 material = SubResource("StandardMaterial3D_33ipb")
 
-[node name="Puerta2" type="StaticBody3D" parent="Nivel/PUERTAS" unique_id=1152842328]
+[node name="Puerta2" type="AnimatableBody3D" parent="Nivel/PUERTAS" unique_id=1595351132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1366205, 0.28119516, 0)
 script = ExtResource("4_8rn06")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/PUERTAS/Puerta2" unique_id=762690626]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.42059207, 0.8892245, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.5109308, 0.5820744, 0)
 shape = SubResource("BoxShape3D_v27x2")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Nivel/PUERTAS/Puerta2" unique_id=130959634]
@@ -121,12 +155,12 @@ transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.335, 0.49568427, 0.562557, 0)
 mesh = SubResource("BoxMesh_8rn06")
 material = SubResource("StandardMaterial3D_arh6c")
 
-[node name="Puerta3" type="StaticBody3D" parent="Nivel/PUERTAS" unique_id=2141066913]
+[node name="Puerta3" type="AnimatableBody3D" parent="Nivel/PUERTAS" unique_id=1357803182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.371973, 0.28119516, 0)
 script = ExtResource("4_8rn06")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/PUERTAS/Puerta3" unique_id=1700958476]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.42059207, 0.8892245, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.4205923, 0.6001425, 0)
 shape = SubResource("BoxShape3D_v27x2")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Nivel/PUERTAS/Puerta3" unique_id=1314516534]
@@ -134,12 +168,12 @@ transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.335, 0.49568427, 0.562557, 0)
 mesh = SubResource("BoxMesh_8rn06")
 material = SubResource("StandardMaterial3D_arh6c")
 
-[node name="Puerta4" type="StaticBody3D" parent="Nivel/PUERTAS" unique_id=620457810]
+[node name="Puerta4" type="AnimatableBody3D" parent="Nivel/PUERTAS" unique_id=1609595947]
 transform = Transform3D(-0.9999968, 0, -0.0025481277, 0, 1, 0, 0.0025481277, 0, -0.9999968, 8.443802, 0.28119516, 0)
 script = ExtResource("4_33ipb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/PUERTAS/Puerta4" unique_id=1272744665]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.42059207, 0.8892245, 0)
+transform = Transform3D(1.5000004, 0, 0, 0, 1.5, 0, 0, 0, 1.5000004, 0.42059326, 0.5882592, -9.536743e-07)
 shape = SubResource("BoxShape3D_v27x2")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Nivel/PUERTAS/Puerta4" unique_id=1081493171]
@@ -147,21 +181,96 @@ transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.335, 0.49568427, 0.562557, 0)
 mesh = SubResource("BoxMesh_8rn06")
 material = SubResource("StandardMaterial3D_arh6c")
 
-[node name="puente" type="StaticBody3D" parent="Nivel/PUERTAS" unique_id=1726463050]
-transform = Transform3D(-0.9999968, 0, -0.0025481277, 0, 1, 0, 0.0025481277, 0, -0.9999968, 8.443802, 0.28119516, 0)
-script = ExtResource("6_arh6c")
+[node name="catapulta" type="AnimatableBody3D" parent="Nivel/PUERTAS" unique_id=1477401972]
+transform = Transform3D(1.3739953, 0, 0, 0, -1.258528e-07, -1.2421447, 0, 2.8791764, -5.429587e-08, 17.572891, 1.1362455, 0)
+script = ExtResource("7_c7xdx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/PUERTAS/puente" unique_id=1268056307]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.42059207, 0.8892245, 0)
-shape = SubResource("BoxShape3D_v27x2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nivel/PUERTAS/catapulta" unique_id=376646966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_5pkp6")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Nivel/PUERTAS/puente" unique_id=2061567070]
-transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.335, 0.49568427, 0.562557, 0)
-mesh = SubResource("BoxMesh_8rn06")
-material = SubResource("StandardMaterial3D_arh6c")
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Nivel/PUERTAS/catapulta" unique_id=1096674128]
+transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 0.06654507, 0, 1, 1.4901161e-08)
+mesh = SubResource("BoxMesh_c7xdx")
+material = SubResource("StandardMaterial3D_c7xdx")
+
+[node name="objeto" type="RigidBody3D" parent="." unique_id=1206530627]
+transform = Transform3D(0.014852173, -0.9998897, 0, 0.9998897, 0.014852173, 0, 0, 0, 1, 0.2829988, 0.3102939, -8.221927)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gpnsm")
+can_sleep = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objeto" unique_id=1085194378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32523727, 0, 0)
+shape = SubResource("BoxShape3D_by2xk")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="objeto" unique_id=1549159782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31860542, 0, 0)
+mesh = SubResource("BoxMesh_kqj3r")
+material = SubResource("StandardMaterial3D_wnyr0")
+
+[node name="objeto2" type="RigidBody3D" parent="." unique_id=989905180]
+transform = Transform3D(-0.40601638, -0.291806, 0, 0.23029393, -0.32042897, -0.30706686, 0.17920788, -0.24934828, 0.39460102, -9.51071, 6.5003104, -2.0005274)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gpnsm")
+can_sleep = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objeto2" unique_id=16065525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32523727, 0, 0)
+shape = SubResource("BoxShape3D_by2xk")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="objeto2" unique_id=395939079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31860542, 0, 0)
+mesh = SubResource("BoxMesh_kqj3r")
+material = SubResource("StandardMaterial3D_wnyr0")
+
+[node name="objeto3" type="RigidBody3D" parent="." unique_id=254240245]
+transform = Transform3D(0.014852173, -0.9998897, 0, 0.9998897, 0.014852173, 0, 0, 0, 1, 17.595192, 2.2631004, -2.7378438)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gpnsm")
+can_sleep = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objeto3" unique_id=1439517792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32523727, 0, 0)
+shape = SubResource("BoxShape3D_by2xk")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="objeto3" unique_id=758694252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31860542, 0, 0)
+mesh = SubResource("BoxMesh_kqj3r")
+material = SubResource("StandardMaterial3D_wnyr0")
+
+[node name="objeto4" type="RigidBody3D" parent="." unique_id=1624533143]
+transform = Transform3D(0.014852173, -0.9998897, 0, 0.9998897, 0.014852173, 0, 0, 0, 1, -10.126135, 2.2094285, -7.7817326)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gpnsm")
+can_sleep = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objeto4" unique_id=1508028759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32523727, 0, 0)
+shape = SubResource("BoxShape3D_by2xk")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="objeto4" unique_id=1988361353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31860542, 0, 0)
+mesh = SubResource("BoxMesh_kqj3r")
+material = SubResource("StandardMaterial3D_wnyr0")
+
+[node name="objeto5" type="RigidBody3D" parent="." unique_id=1060996498]
+transform = Transform3D(0.014852173, -0.9998897, 0, 0.9998897, 0.014852173, 0, 0, 0, 1, 7.5212, 0.30459154, -8.638233)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gpnsm")
+can_sleep = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objeto5" unique_id=1957007996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32523727, 0, 0)
+shape = SubResource("BoxShape3D_by2xk")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="objeto5" unique_id=2044533896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31860542, 0, 0)
+mesh = SubResource("BoxMesh_kqj3r")
+material = SubResource("StandardMaterial3D_wnyr0")
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=358213741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76524115, 1.0742307, 3.707243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.226404, 1.0742307, 3.707243)
 script = ExtResource("2_7v510")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=731622988]
@@ -172,7 +281,7 @@ mesh = SubResource("CapsuleMesh_v27x2")
 material = SubResource("StandardMaterial3D_8rn06")
 
 [node name="Camera3D" type="Camera3D" parent="player" unique_id=1475012375]
-transform = Transform3D(1, 0, 0, 0, 0.9797329, 0.2003085, 0, -0.2003085, 0.9797329, 0, 4.628996, 7.9328156)
+transform = Transform3D(1, 0, 0, 0, 0.9999657, 0.008272752, 0, -0.008272752, 0.9999657, 0, 2.9623795, 7.9328156)
 
 [connection signal="activado" from="Nivel/BOTONES/boton1" to="Nivel/PUERTAS/Puerta1" method="abrir"]
 [connection signal="desactivado" from="Nivel/BOTONES/boton1" to="Nivel/PUERTAS/Puerta1" method="cerrar"]
@@ -182,5 +291,5 @@ transform = Transform3D(1, 0, 0, 0, 0.9797329, 0.2003085, 0, -0.2003085, 0.97973
 [connection signal="activado" from="Nivel/BOTONES/boton3" to="Nivel/PUERTAS/Puerta4" method="abrir"]
 [connection signal="desactivado" from="Nivel/BOTONES/boton3" to="Nivel/PUERTAS/Puerta3" method="cerrar"]
 [connection signal="desactivado" from="Nivel/BOTONES/boton3" to="Nivel/PUERTAS/Puerta4" method="cerrar"]
-[connection signal="activado" from="Nivel/BOTONES/B_puente" to="Nivel/PUERTAS/puente" method="abrir"]
-[connection signal="desactivado" from="Nivel/BOTONES/B_puente" to="Nivel/PUERTAS/puente" method="cerrar"]
+[connection signal="activado" from="Nivel/BOTONES/B_catapulta" to="Nivel/PUERTAS/catapulta" method="abrir"]
+[connection signal="desactivado" from="Nivel/BOTONES/B_catapulta" to="Nivel/PUERTAS/catapulta" method="cerrar"]

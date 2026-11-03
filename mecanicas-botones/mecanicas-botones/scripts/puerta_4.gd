@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends AnimatableBody3D
 
 @export var velocidad := 1
 
